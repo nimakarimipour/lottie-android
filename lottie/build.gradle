@@ -97,6 +97,7 @@ tasks.withType(JavaCompile) {
     options.errorprone {
       option("NullAway:AnnotatedPackages", "com.airbnb.lottie")
       option("NullAway:AutoFix", "true")
+      option("NullAway:FixAnnotation", "androidx.annotation.NonNull,androidx.annotation.Nullable")
       // TODO: enable these and fix errors one by one.
       check("NullAway", CheckSeverity.ERROR)
       check("StringSplitter", CheckSeverity.OFF)
