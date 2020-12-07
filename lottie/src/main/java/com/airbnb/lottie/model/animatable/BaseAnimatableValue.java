@@ -1,5 +1,7 @@
 package com.airbnb.lottie.model.animatable;
 
+import androidx.annotation.Nullable;
+
 import android.graphics.PointF;
 
 import com.airbnb.lottie.value.Keyframe;
@@ -18,7 +20,7 @@ abstract class BaseAnimatableValue<V, O> implements AnimatableValue<V, O> {
     this(Collections.singletonList(new Keyframe<>(value)));
   }
 
-  BaseAnimatableValue(List<Keyframe<V>> keyframes) {
+  BaseAnimatableValue(@Nullable List<Keyframe<V>> keyframes) {
     this.keyframes = keyframes;
   }
 

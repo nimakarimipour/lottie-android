@@ -54,7 +54,7 @@ public abstract class BaseStrokeContent
   @Nullable private BaseKeyframeAnimation<ColorFilter, ColorFilter> colorFilterAnimation;
 
   BaseStrokeContent(final LottieDrawable lottieDrawable, BaseLayer layer, Paint.Cap cap,
-      Paint.Join join, float miterLimit, AnimatableIntegerValue opacity, AnimatableFloatValue width,
+      @Nullable Paint.Join join, float miterLimit, AnimatableIntegerValue opacity, AnimatableFloatValue width,
       List<AnimatableFloatValue> dashPattern, @Nullable AnimatableFloatValue offset) {
     this.lottieDrawable = lottieDrawable;
     this.layer = layer;

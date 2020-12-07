@@ -71,7 +71,7 @@ public final class Utils {
   private Utils() {
   }
 
-  public static Path createPath(@Nullable PointF startPoint, PointF endPoint, PointF cp1, PointF cp2) {
+  public static Path createPath(@Nullable PointF startPoint, PointF endPoint, @Nullable PointF cp1, PointF cp2) {
     Path path = new Path();
     path.moveTo(startPoint.x, startPoint.y);
 

@@ -1130,6 +1130,7 @@ import static com.airbnb.lottie.RenderMode.HARDWARE;
   }
 
   private static class SavedState extends BaseSavedState {
+    @Nullable
     String animationName;
     int animationResId;
     float progress;

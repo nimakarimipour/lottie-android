@@ -33,6 +33,8 @@ public class LottieComposition {
 
   private final PerformanceTracker performanceTracker = new PerformanceTracker();
   private final HashSet<String> warnings = new HashSet<>();
+
+  @Nullable
   private Map<String, List<Layer>> precomps;
   private Map<String, LottieImageAsset> images;
   /** Map of font names to fonts */
@@ -165,6 +167,7 @@ public class LottieComposition {
     return characters;
   }
 
+  @Nullable
   public Map<String, Font> getFonts() {
     return fonts;
   }

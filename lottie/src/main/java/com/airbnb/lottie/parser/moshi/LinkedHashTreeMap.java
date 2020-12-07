@@ -296,6 +296,7 @@ final class LinkedHashTreeMap<K, V> extends AbstractMap<K, V> implements Seriali
     modCount++;
   }
 
+  @Nullable
   Node<K, V> removeInternalByKey(Object key) {
     Node<K, V> node = findByObject(key);
     if (node != null) {
@@ -304,7 +305,7 @@ final class LinkedHashTreeMap<K, V> extends AbstractMap<K, V> implements Seriali
     return node;
   }
 
-  private void replaceInParent(Node<K, V> node, Node<K, V> replacement) {
+  private void replaceInParent(Node<K, V> node, @Nullable Node<K, V> replacement) {
     Node<K, V> parent = node.parent;
     node.parent = null;
     if (replacement != null) {
