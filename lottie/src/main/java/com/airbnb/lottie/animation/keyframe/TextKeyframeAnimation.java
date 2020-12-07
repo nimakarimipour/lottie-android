@@ -1,5 +1,7 @@
 package com.airbnb.lottie.animation.keyframe;
 
+import androidx.annotation.Nullable;
+
 import com.airbnb.lottie.value.Keyframe;
 import com.airbnb.lottie.model.DocumentData;
 
@@ -10,7 +12,7 @@ public class TextKeyframeAnimation extends KeyframeAnimation<DocumentData> {
     super(keyframes);
   }
 
-  @Override DocumentData getValue(Keyframe<DocumentData> keyframe, float keyframeProgress) {
+  @Override@Nullable DocumentData getValue(Keyframe<DocumentData> keyframe, float keyframeProgress) {
     if (keyframeProgress != 1.0f || keyframe.endValue == null)
       return keyframe.startValue;
     else

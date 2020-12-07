@@ -1,5 +1,7 @@
 package com.airbnb.lottie.model.content;
 
+import androidx.annotation.Nullable;
+
 import android.graphics.PointF;
 import androidx.annotation.FloatRange;
 
@@ -12,6 +14,8 @@ import java.util.List;
 
 public class ShapeData {
   private final List<CubicCurveData> curves;
+
+  @Nullable
   private PointF initialPoint;
   private boolean closed;
 

@@ -1,5 +1,7 @@
 package com.airbnb.lottie.model.animatable;
 
+import androidx.annotation.Nullable;
+
 import com.airbnb.lottie.value.Keyframe;
 import com.airbnb.lottie.animation.keyframe.BaseKeyframeAnimation;
 import com.airbnb.lottie.animation.keyframe.FloatKeyframeAnimation;
@@ -12,7 +14,7 @@ public class AnimatableFloatValue extends BaseAnimatableValue<Float, Float> {
     super(0f);
   }
 
-  public AnimatableFloatValue(List<Keyframe<Float>> keyframes) {
+  public AnimatableFloatValue(@Nullable List<Keyframe<Float>> keyframes) {
     super(keyframes);
   }
 

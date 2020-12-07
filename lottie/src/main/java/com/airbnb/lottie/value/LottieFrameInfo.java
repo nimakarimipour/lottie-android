@@ -1,15 +1,17 @@
 package com.airbnb.lottie.value;
 
+import androidx.annotation.Nullable;
+
 import androidx.annotation.RestrictTo;
 
-/**
- * Data class for use with {@link LottieValueCallback}.
- * You should *not* hold a reference to the frame info parameter passed to your callback. It will be reused.
- */
 public class LottieFrameInfo<T> {
   private float startFrame;
   private float endFrame;
+
+  @Nullable
   private T startValue;
+
+  @Nullable
   private T endValue;
   private float linearKeyframeProgress;
   private float interpolatedKeyframeProgress;

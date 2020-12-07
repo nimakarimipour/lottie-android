@@ -1,5 +1,7 @@
 package com.airbnb.lottie.model.content;
 
+import androidx.annotation.Nullable;
+
 import android.graphics.PointF;
 
 import com.airbnb.lottie.LottieDrawable;
@@ -20,6 +22,7 @@ public class PolystarShape implements ContentModel {
       this.value = value;
     }
 
+    @Nullable
     public static Type forValue(int value) {
       for (Type type : Type.values()) {
         if (type.value == value) {

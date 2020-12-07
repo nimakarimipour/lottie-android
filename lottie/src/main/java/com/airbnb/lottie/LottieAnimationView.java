@@ -1,5 +1,7 @@
 package com.airbnb.lottie;
 
+import androidx.annotation.Nullable;
+
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -22,7 +24,6 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.FloatRange;
 import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RawRes;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.AppCompatImageView;
@@ -44,27 +45,6 @@ import java.util.concurrent.Callable;
 
 import static com.airbnb.lottie.RenderMode.HARDWARE;
 
-/**
- * This view will load, deserialize, and display an After Effects animation exported with
- * bodymovin (https://github.com/bodymovin/bodymovin).
- * <p>
- * You may set the animation in one of two ways:
- * 1) Attrs: {@link R.styleable#LottieAnimationView_lottie_fileName}
- * 2) Programmatically:
- *      {@link #setAnimation(String)}
- *      {@link #setAnimation(int)}
- *      {@link #setAnimation(InputStream, String)}
- *      {@link #setAnimationFromJson(String, String)}
- *      {@link #setAnimationFromUrl(String)}
- *      {@link #setComposition(LottieComposition)}
- * <p>
- * You can set a default cache strategy with {@link R.attr#lottie_cacheComposition}.
- * <p>
- * You can manually set the progress of the animation with {@link #setProgress(float)} or
- * {@link R.attr#lottie_progress}
- *
- * @see <a href="http://airbnb.io/lottie">Full Documentation</a>
- */
 @SuppressWarnings({"unused", "WeakerAccess"}) public class LottieAnimationView extends AppCompatImageView {
 
   private static final String TAG = LottieAnimationView.class.getSimpleName();
@@ -100,6 +80,8 @@ import static com.airbnb.lottie.RenderMode.HARDWARE;
 
   private final LottieDrawable lottieDrawable = new LottieDrawable();
   private boolean isInitialized;
+
+  @Nullable
   private String animationName;
   private @RawRes int animationResId;
 
@@ -228,7 +210,7 @@ import static com.airbnb.lottie.RenderMode.HARDWARE;
     super.setImageResource(resId);
   }
 
-  @Override public void setImageDrawable(Drawable drawable) {
+  @Override public void setImageDrawable(@Nullable Drawable drawable) {
     cancelLoaderTask();
     super.setImageDrawable(drawable);
   }
@@ -1152,6 +1134,8 @@ import static com.airbnb.lottie.RenderMode.HARDWARE;
     int animationResId;
     float progress;
     boolean isAnimating;
+
+    @Nullable
     String imageAssetsFolder;
     int repeatMode;
     int repeatCount;

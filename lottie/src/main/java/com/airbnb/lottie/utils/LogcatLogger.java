@@ -1,5 +1,7 @@
 package com.airbnb.lottie.utils;
 
+import androidx.annotation.Nullable;
+
 import android.util.Log;
 
 import com.airbnb.lottie.L;
@@ -8,10 +10,6 @@ import com.airbnb.lottie.LottieLogger;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Default logger.
- * Warnings with same message will only be logged once.
- */
 public class LogcatLogger implements LottieLogger {
 
   /**
@@ -24,7 +22,7 @@ public class LogcatLogger implements LottieLogger {
     debug(message, null);
   }
 
-  public void debug(String message, Throwable exception) {
+  public void debug(String message, @Nullable Throwable exception) {
     if (L.DBG) {
       Log.d(L.TAG, message, exception);
     }
@@ -34,7 +32,7 @@ public class LogcatLogger implements LottieLogger {
     warning(message, null);
   }
 
-  public void warning(String message, Throwable exception) {
+  public void warning(String message, @Nullable Throwable exception) {
     if (loggedMessages.contains(message)) {
       return;
     }

@@ -1,5 +1,7 @@
 package com.airbnb.lottie.model.layer;
 
+import androidx.annotation.Nullable;
+
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
@@ -20,7 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.FloatRange;
-import androidx.annotation.Nullable;
 import androidx.collection.LongSparseArray;
 
 public class CompositionLayer extends BaseLayer {
@@ -33,7 +34,7 @@ public class CompositionLayer extends BaseLayer {
   @Nullable private Boolean hasMatte;
   @Nullable private Boolean hasMasks;
 
-  public CompositionLayer(LottieDrawable lottieDrawable, Layer layerModel, List<Layer> layerModels,
+  public CompositionLayer(LottieDrawable lottieDrawable, Layer layerModel, @Nullable List<Layer> layerModels,
       LottieComposition composition) {
     super(lottieDrawable, layerModel);
 

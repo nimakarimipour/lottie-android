@@ -1,5 +1,7 @@
 package com.airbnb.lottie.animation.keyframe;
 
+import androidx.annotation.Nullable;
+
 import android.graphics.PointF;
 
 import com.airbnb.lottie.value.Keyframe;
@@ -35,7 +37,7 @@ public class SplitDimensionPathKeyframeAnimation extends BaseKeyframeAnimation<P
     return getValue(null, 0);
   }
 
-  @Override PointF getValue(Keyframe<PointF> keyframe, float keyframeProgress) {
+  @Override PointF getValue(@Nullable Keyframe<PointF> keyframe, float keyframeProgress) {
     return point;
   }
 }

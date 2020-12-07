@@ -1,7 +1,8 @@
 package com.airbnb.lottie.parser;
 
-import android.graphics.PointF;
 import androidx.annotation.Nullable;
+
+import android.graphics.PointF;
 import androidx.collection.SparseArrayCompat;
 import androidx.core.view.animation.PathInterpolatorCompat;
 import android.view.animation.Interpolator;
@@ -24,6 +25,8 @@ class KeyframeParser {
    */
   private static final float MAX_CP_VALUE = 100;
   private static final Interpolator LINEAR_INTERPOLATOR = new LinearInterpolator();
+
+  @Nullable
   private static SparseArrayCompat<WeakReference<Interpolator>> pathInterpolatorCache;
 
   static JsonReader.Options NAMES = JsonReader.Options.of(

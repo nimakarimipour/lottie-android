@@ -1,5 +1,7 @@
 package com.airbnb.lottie.parser;
 
+import androidx.annotation.Nullable;
+
 import android.graphics.PointF;
 import android.util.JsonToken;
 import com.airbnb.lottie.LottieComposition;
@@ -139,29 +141,29 @@ public class AnimatableTransformParser {
     return new AnimatableTransform(anchorPoint, position, scale, rotation, opacity, startOpacity, endOpacity, skew, skewAngle);
   }
 
-  private static boolean isAnchorPointIdentity(AnimatablePathValue anchorPoint) {
+  private static boolean isAnchorPointIdentity(@Nullable AnimatablePathValue anchorPoint) {
     return anchorPoint == null || (anchorPoint.isStatic() && anchorPoint.getKeyframes().get(0).startValue.equals(0f, 0f));
   }
 
-  private static boolean isPositionIdentity(AnimatableValue<PointF, PointF> position) {
+  private static boolean isPositionIdentity(@Nullable AnimatableValue<PointF, PointF> position) {
     return position == null || (
         !(position instanceof AnimatableSplitDimensionPathValue) &&
             position.isStatic() && position.getKeyframes().get(0).startValue.equals(0f, 0f));
   }
 
-  private static boolean isRotationIdentity(AnimatableFloatValue rotation) {
+  private static boolean isRotationIdentity(@Nullable AnimatableFloatValue rotation) {
     return rotation == null || (rotation.isStatic() && rotation.getKeyframes().get(0).startValue == 0f);
   }
 
-  private static boolean isScaleIdentity(AnimatableScaleValue scale) {
+  private static boolean isScaleIdentity(@Nullable AnimatableScaleValue scale) {
     return scale == null || (scale.isStatic() && scale.getKeyframes().get(0).startValue.equals(1f, 1f));
   }
 
-  private static boolean isSkewIdentity(AnimatableFloatValue skew) {
+  private static boolean isSkewIdentity(@Nullable AnimatableFloatValue skew) {
     return skew == null || (skew.isStatic() && skew.getKeyframes().get(0).startValue == 0f);
   }
 
-  private static boolean isSkewAngleIdentity(AnimatableFloatValue skewAngle) {
+  private static boolean isSkewAngleIdentity(@Nullable AnimatableFloatValue skewAngle) {
     return skewAngle == null || (skewAngle.isStatic() && skewAngle.getKeyframes().get(0).startValue == 0f);
   }
 }

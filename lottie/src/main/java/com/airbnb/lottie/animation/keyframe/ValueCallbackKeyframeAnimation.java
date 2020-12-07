@@ -16,7 +16,7 @@ public class ValueCallbackKeyframeAnimation<K, A> extends BaseKeyframeAnimation<
     this(valueCallback, null);
   }
 
-  public ValueCallbackKeyframeAnimation(LottieValueCallback<A> valueCallback, @Nullable A valueCallbackValue) {
+  public ValueCallbackKeyframeAnimation(@Nullable LottieValueCallback<A> valueCallback, @Nullable A valueCallbackValue) {
     super(Collections.<Keyframe<K>>emptyList());
     setValueCallback(valueCallback);
     this.valueCallbackValue = valueCallbackValue;

@@ -1,8 +1,9 @@
 package com.airbnb.lottie.animation.keyframe;
 
+import androidx.annotation.Nullable;
+
 import androidx.annotation.FloatRange;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.airbnb.lottie.L;
 import com.airbnb.lottie.value.Keyframe;
@@ -11,10 +12,6 @@ import com.airbnb.lottie.value.LottieValueCallback;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @param <K> Keyframe type
- * @param <A> Animation type
- */
 public abstract class BaseKeyframeAnimation<K, A> {
   public interface AnimationListener {
     void onValueChanged();
@@ -263,6 +260,8 @@ public abstract class BaseKeyframeAnimation<K, A> {
     private final List<? extends Keyframe<T>> keyframes;
     @NonNull
     private Keyframe<T> currentKeyframe;
+
+    @Nullable
     private Keyframe<T> cachedCurrentKeyframe = null;
     private float cachedInterpolatedProgress = -1f;
 

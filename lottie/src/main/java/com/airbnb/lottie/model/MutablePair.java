@@ -6,10 +6,6 @@ import androidx.core.util.Pair;
 
 import static androidx.annotation.RestrictTo.Scope.LIBRARY;
 
-/**
- * Non final version of {@link Pair}
- * @param <T>
- */
 @RestrictTo(LIBRARY)
 public class MutablePair<T> {
   @Nullable T first;
@@ -37,7 +33,7 @@ public class MutablePair<T> {
     return objectsEqual(p.first, first) && objectsEqual(p.second, second);
   }
 
-  private static boolean objectsEqual(Object a, Object b) {
+  private static boolean objectsEqual(Object a, @Nullable Object b) {
     return a == b || (a != null && a.equals(b));
   }
 

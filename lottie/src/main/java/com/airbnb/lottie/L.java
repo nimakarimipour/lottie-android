@@ -1,5 +1,7 @@
 package com.airbnb.lottie;
 
+import androidx.annotation.Nullable;
+
 import android.content.Context;
 
 import com.airbnb.lottie.network.LottieNetworkCacheProvider;
@@ -27,10 +29,16 @@ public class L {
   private static int traceDepth = 0;
   private static int depthPastMaxDepth = 0;
 
+  @Nullable
   private static LottieNetworkFetcher fetcher;
+
+  @Nullable
   private static LottieNetworkCacheProvider cacheProvider;
 
+  @Nullable
   private static volatile NetworkFetcher networkFetcher;
+
+  @Nullable
   private static volatile NetworkCache networkCache;
 
   private L() {
@@ -81,11 +89,11 @@ public class L {
     return (System.nanoTime() - startTimeNs[traceDepth]) / 1000000f;
   }
 
-  public static void setFetcher(LottieNetworkFetcher customFetcher) {
+  public static void setFetcher(@Nullable LottieNetworkFetcher customFetcher) {
     fetcher = customFetcher;
   }
 
-  public static void setCacheProvider(LottieNetworkCacheProvider customProvider) {
+  public static void setCacheProvider(@Nullable LottieNetworkCacheProvider customProvider) {
     cacheProvider = customProvider;
   }
 

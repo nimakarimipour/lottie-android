@@ -1,5 +1,7 @@
 package com.airbnb.lottie.animation.content;
 
+import androidx.annotation.Nullable;
+
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.DashPathEffect;
@@ -9,7 +11,6 @@ import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.graphics.RectF;
 import androidx.annotation.CallSuper;
-import androidx.annotation.Nullable;
 
 import com.airbnb.lottie.L;
 import com.airbnb.lottie.LottieDrawable;
@@ -54,7 +55,7 @@ public abstract class BaseStrokeContent
 
   BaseStrokeContent(final LottieDrawable lottieDrawable, BaseLayer layer, Paint.Cap cap,
       Paint.Join join, float miterLimit, AnimatableIntegerValue opacity, AnimatableFloatValue width,
-      List<AnimatableFloatValue> dashPattern, AnimatableFloatValue offset) {
+      List<AnimatableFloatValue> dashPattern, @Nullable AnimatableFloatValue offset) {
     this.lottieDrawable = lottieDrawable;
     this.layer = layer;
 

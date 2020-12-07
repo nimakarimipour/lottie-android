@@ -1,8 +1,9 @@
 package com.airbnb.lottie.value;
 
+import androidx.annotation.Nullable;
+
 import android.graphics.PointF;
 import androidx.annotation.FloatRange;
-import androidx.annotation.Nullable;
 import android.view.animation.Interpolator;
 
 import com.airbnb.lottie.LottieComposition;
@@ -29,7 +30,10 @@ public class Keyframe<T> {
 
   // Used by PathKeyframe but it has to be parsed by KeyFrame because we use a JsonReader to
   // deserialzie the data so we have to parse everything in order
+  @Nullable
   public PointF pathCp1 = null;
+
+  @Nullable
   public PointF pathCp2 = null;
 
 

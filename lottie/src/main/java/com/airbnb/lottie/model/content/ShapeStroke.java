@@ -1,7 +1,8 @@
 package com.airbnb.lottie.model.content;
 
-import android.graphics.Paint;
 import androidx.annotation.Nullable;
+
+import android.graphics.Paint;
 
 import com.airbnb.lottie.LottieDrawable;
 import com.airbnb.lottie.animation.content.Content;
@@ -37,6 +38,7 @@ public class ShapeStroke implements ContentModel {
     ROUND,
     BEVEL;
 
+    @Nullable
     public Paint.Join toPaintJoin() {
       switch (this) {
         case BEVEL:
@@ -101,6 +103,7 @@ public class ShapeStroke implements ContentModel {
     return lineDashPattern;
   }
 
+  @Nullable
   public AnimatableFloatValue getDashOffset() {
     return offset;
   }

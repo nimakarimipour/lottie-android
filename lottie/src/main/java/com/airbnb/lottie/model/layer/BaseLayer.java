@@ -1,11 +1,12 @@
 package com.airbnb.lottie.model.layer;
 
+import androidx.annotation.Nullable;
+
 import android.graphics.*;
 import android.os.Build;
 
 import androidx.annotation.CallSuper;
 import androidx.annotation.FloatRange;
-import androidx.annotation.Nullable;
 import com.airbnb.lottie.L;
 import com.airbnb.lottie.LottieComposition;
 import com.airbnb.lottie.LottieDrawable;
@@ -91,6 +92,8 @@ public abstract class BaseLayer
    */
   @Nullable
   private BaseLayer parentLayer;
+
+  @Nullable
   private List<BaseLayer> parentLayers;
 
   private final List<BaseKeyframeAnimation<?, ?>> animations = new ArrayList<>();

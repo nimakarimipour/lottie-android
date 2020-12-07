@@ -1,5 +1,7 @@
 package com.airbnb.lottie.animation.keyframe;
 
+import androidx.annotation.Nullable;
+
 import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.graphics.PointF;
@@ -11,6 +13,8 @@ import java.util.List;
 public class PathKeyframeAnimation extends KeyframeAnimation<PointF> {
   private final PointF point = new PointF();
   private final float[] pos = new float[2];
+
+  @Nullable
   private PathKeyframe pathMeasureKeyframe;
   private PathMeasure pathMeasure = new PathMeasure();
 
@@ -18,7 +22,7 @@ public class PathKeyframeAnimation extends KeyframeAnimation<PointF> {
     super(keyframes);
   }
 
-  @Override public PointF getValue(Keyframe<PointF> keyframe, float keyframeProgress) {
+  @Override@Nullable public PointF getValue(Keyframe<PointF> keyframe, float keyframeProgress) {
     PathKeyframe pathKeyframe = (PathKeyframe) keyframe;
     Path path = pathKeyframe.getPath();
     if (path == null) {

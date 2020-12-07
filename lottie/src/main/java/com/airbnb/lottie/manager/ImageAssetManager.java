@@ -1,10 +1,11 @@
 package com.airbnb.lottie.manager;
 
+import androidx.annotation.Nullable;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
-import androidx.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.view.View;
@@ -118,10 +119,11 @@ public class ImageAssetManager {
     return putBitmap(id, bitmap);
   }
 
-  public boolean hasSameContext(Context context) {
+  public boolean hasSameContext(@Nullable Context context) {
     return context == null && this.context == null || this.context.equals(context);
   }
 
+  @Nullable
   private Bitmap putBitmap(String key, @Nullable Bitmap bitmap) {
     synchronized (bitmapHashLock) {
       imageAssets.get(key).setBitmap(bitmap);

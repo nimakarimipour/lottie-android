@@ -16,6 +16,8 @@
  */
 package com.airbnb.lottie.parser.moshi;
 
+import androidx.annotation.Nullable;
+
 import java.io.ObjectStreamException;
 import java.io.Serializable;
 import java.util.AbstractMap;
@@ -28,14 +30,6 @@ import java.util.LinkedHashMap;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
-/**
- * A map of comparable keys to values. Unlike {@code TreeMap}, this class uses
- * insertion order for iteration order. Comparison order is only used as an
- * optimization for efficient insertion and removal.
- *
- * <p>This implementation was derived from Android 4.1's TreeMap and
- * LinkedHashMap classes.
- */
 final class LinkedHashTreeMap<K, V> extends AbstractMap<K, V> implements Serializable {
   @SuppressWarnings({ "unchecked", "rawtypes" }) // to avoid Comparable<Comparable<Comparable<...>>>
   private static final Comparator<Comparable> NATURAL_ORDER = new Comparator<Comparable>() {
@@ -69,7 +63,7 @@ final class LinkedHashTreeMap<K, V> extends AbstractMap<K, V> implements Seriali
   @SuppressWarnings({
       "unchecked", "rawtypes" // Unsafe! if comparator is null, this assumes K is comparable.
   })
-  LinkedHashTreeMap(Comparator<? super K> comparator) {
+  LinkedHashTreeMap(@Nullable Comparator<? super K> comparator) {
     this.comparator = comparator != null
         ? comparator
         : (Comparator) NATURAL_ORDER;
@@ -82,7 +76,7 @@ final class LinkedHashTreeMap<K, V> extends AbstractMap<K, V> implements Seriali
     return size;
   }
 
-  @Override public V get(Object key) {
+  @Override@Nullable public V get(Object key) {
     Node<K, V> node = findByObject(key);
     return node != null ? node.value : null;
   }
@@ -117,7 +111,7 @@ final class LinkedHashTreeMap<K, V> extends AbstractMap<K, V> implements Seriali
     header.next = header.prev = header;
   }
 
-  @Override public V remove(Object key) {
+  @Override@Nullable public V remove(Object key) {
     Node<K, V> node = removeInternalByKey(key);
     return node != null ? node.value : null;
   }
@@ -128,6 +122,7 @@ final class LinkedHashTreeMap<K, V> extends AbstractMap<K, V> implements Seriali
    * @throws ClassCastException if {@code key} and the tree's keys aren't
    *     mutually comparable.
    */
+  @Nullable
   Node<K, V> find(K key, boolean create) {
     Comparator<? super K> comparator = this.comparator;
     Node<K, V>[] table = this.table;
@@ -196,7 +191,7 @@ final class LinkedHashTreeMap<K, V> extends AbstractMap<K, V> implements Seriali
     return created;
   }
 
-  @SuppressWarnings("unchecked")
+  @SuppressWarnings("unchecked")@Nullable
   Node<K, V> findByObject(Object key) {
     try {
       return key != null ? find((K) key, false) : null;
@@ -214,6 +209,7 @@ final class LinkedHashTreeMap<K, V> extends AbstractMap<K, V> implements Seriali
    * {@code String.CASE_INSENSITIVE_ORDER}), then {@code remove()} and {@code
    * contains()} will violate the collections API.
    */
+  @Nullable
   Node<K, V> findByEntry(Entry<?, ?> entry) {
     Node<K, V> mine = findByObject(entry.getKey());
     boolean valuesEqual = mine != null && equal(mine.value, entry.getValue());
@@ -451,7 +447,10 @@ final class LinkedHashTreeMap<K, V> extends AbstractMap<K, V> implements Seriali
         pivotLeft != null ? pivotLeft.height : 0) + 1;
   }
 
+  @Nullable
   private EntrySet entrySet;
+
+  @Nullable
   private KeySet keySet;
 
   @Override public Set<Entry<K, V>> entrySet() {
@@ -466,7 +465,11 @@ final class LinkedHashTreeMap<K, V> extends AbstractMap<K, V> implements Seriali
 
   static final class Node<K, V> implements Entry<K, V> {
     Node<K, V> parent;
+
+    @Nullable
     Node<K, V> left;
+
+    @Nullable
     Node<K, V> right;
     Node<K, V> next;
     Node<K, V> prev;
@@ -621,6 +624,7 @@ final class LinkedHashTreeMap<K, V> extends AbstractMap<K, V> implements Seriali
    */
   static class AvlIterator<K, V> {
     /** This stack is a singly linked list, linked by the 'parent' field. */
+    @Nullable
     private Node<K, V> stackTop;
 
     void reset(Node<K, V> root) {
@@ -632,6 +636,7 @@ final class LinkedHashTreeMap<K, V> extends AbstractMap<K, V> implements Seriali
       this.stackTop = stackTop;
     }
 
+    @Nullable
     public Node<K, V> next() {
       Node<K, V> stackTop = this.stackTop;
       if (stackTop == null) {
@@ -669,6 +674,7 @@ final class LinkedHashTreeMap<K, V> extends AbstractMap<K, V> implements Seriali
    */
   static final class AvlBuilder<K, V> {
     /** This stack is a singly linked list, linked by the 'parent' field. */
+    @Nullable
     private Node<K, V> stack;
     private int leavesToSkip;
     private int leavesSkipped;
@@ -759,6 +765,8 @@ final class LinkedHashTreeMap<K, V> extends AbstractMap<K, V> implements Seriali
 
   abstract class LinkedTreeMapIterator<T> implements Iterator<T> {
     Node<K, V> next = header.next;
+
+    @Nullable
     Node<K, V> lastReturned = null;
     int expectedModCount = modCount;
 

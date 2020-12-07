@@ -1,9 +1,10 @@
 package com.airbnb.lottie.animation.keyframe;
 
+import androidx.annotation.Nullable;
+
 import android.graphics.Matrix;
 import android.graphics.PointF;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.airbnb.lottie.value.Keyframe;
 import com.airbnb.lottie.value.LottieValueCallback;
@@ -30,11 +31,15 @@ public class TransformKeyframeAnimation {
   private final Matrix skewMatrix3;
   private final float[] skewValues;
 
-  @NonNull private BaseKeyframeAnimation<PointF, PointF> anchorPoint;
-  @NonNull private BaseKeyframeAnimation<?, PointF> position;
-  @NonNull private BaseKeyframeAnimation<ScaleXY, ScaleXY> scale;
-  @NonNull private BaseKeyframeAnimation<Float, Float> rotation;
-  @NonNull private BaseKeyframeAnimation<Integer, Integer> opacity;
+  @NonNull@Nullable private BaseKeyframeAnimation<PointF, PointF> anchorPoint;
+
+  @NonNull@Nullable private BaseKeyframeAnimation<?, PointF> position;
+
+  @NonNull@Nullable private BaseKeyframeAnimation<ScaleXY, ScaleXY> scale;
+
+  @NonNull@Nullable private BaseKeyframeAnimation<Float, Float> rotation;
+
+  @NonNull@Nullable private BaseKeyframeAnimation<Integer, Integer> opacity;
   @Nullable private FloatKeyframeAnimation skew;
   @Nullable private FloatKeyframeAnimation skewAngle;
 

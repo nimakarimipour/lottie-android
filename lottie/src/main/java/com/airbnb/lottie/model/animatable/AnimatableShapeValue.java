@@ -1,5 +1,7 @@
 package com.airbnb.lottie.model.animatable;
 
+import androidx.annotation.Nullable;
+
 import android.graphics.Path;
 
 import com.airbnb.lottie.value.Keyframe;
@@ -11,7 +13,7 @@ import java.util.List;
 
 public class AnimatableShapeValue extends BaseAnimatableValue<ShapeData, Path> {
 
-  public AnimatableShapeValue(List<Keyframe<ShapeData>> keyframes) {
+  public AnimatableShapeValue(@Nullable List<Keyframe<ShapeData>> keyframes) {
     super(keyframes);
   }
 

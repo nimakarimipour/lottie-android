@@ -15,10 +15,10 @@
  */
 package com.airbnb.lottie.parser.moshi;
 
+import androidx.annotation.Nullable;
+
 import java.io.EOFException;
 import java.io.IOException;
-
-import androidx.annotation.Nullable;
 import okio.Buffer;
 import okio.BufferedSource;
 import okio.ByteString;
@@ -507,7 +507,7 @@ final class JsonUtf8Reader extends JsonReader {
     }
   }
 
-  @Override public String nextName() throws IOException {
+  @Override@Nullable public String nextName() throws IOException {
     int p = peeked;
     if (p == PEEKED_NONE) {
       p = doPeek();
@@ -591,7 +591,7 @@ final class JsonUtf8Reader extends JsonReader {
    * If {@code name} is in {@code options} this consumes it and returns its index.
    * Otherwise this returns -1 and no name is consumed.
    */
-  private int findName(String name, Options options) {
+  private int findName(@Nullable String name, Options options) {
     for (int i = 0, size = options.strings.length; i < size; i++) {
       if (name.equals(options.strings[i])) {
         peeked = PEEKED_NONE;
@@ -603,7 +603,7 @@ final class JsonUtf8Reader extends JsonReader {
     return -1;
   }
 
-  @Override public String nextString() throws IOException {
+  @Override@Nullable public String nextString() throws IOException {
     int p = peeked;
     if (p == PEEKED_NONE) {
       p = doPeek();

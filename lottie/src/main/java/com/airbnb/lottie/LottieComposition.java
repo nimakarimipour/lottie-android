@@ -1,9 +1,10 @@
 package com.airbnb.lottie;
 
+import androidx.annotation.Nullable;
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import androidx.annotation.Nullable;
 import androidx.annotation.RawRes;
 import androidx.annotation.RestrictTo;
 import androidx.annotation.WorkerThread;
@@ -28,15 +29,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
-/**
- * After Effects/Bodymovin composition model. This is the serialized model from which the
- * animation will be created.
- *
- * To create one, use {@link LottieCompositionFactory}.
- *
- * It can be used with a {@link com.airbnb.lottie.LottieAnimationView} or
- * {@link com.airbnb.lottie.LottieDrawable}.
- */
 public class LottieComposition {
 
   private final PerformanceTracker performanceTracker = new PerformanceTracker();
@@ -44,12 +36,18 @@ public class LottieComposition {
   private Map<String, List<Layer>> precomps;
   private Map<String, LottieImageAsset> images;
   /** Map of font names to fonts */
+  @Nullable
   private Map<String, Font> fonts;
   private List<Marker> markers;
+
+  @Nullable
   private SparseArrayCompat<FontCharacter> characters;
+
+  @Nullable
   private LongSparseArray<Layer> layerMap;
   private List<Layer> layers;
   // This is stored as a set to avoid duplicates.
+  @Nullable
   private Rect bounds;
   private float startFrame;
   private float endFrame;
@@ -159,7 +157,7 @@ public class LottieComposition {
 
   @RestrictTo(RestrictTo.Scope.LIBRARY)
   @Nullable
-  public List<Layer> getPrecomps(String id) {
+  public List<Layer> getPrecomps(@Nullable String id) {
     return precomps.get(id);
   }
 

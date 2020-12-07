@@ -1,5 +1,7 @@
 package com.airbnb.lottie;
 
+import androidx.annotation.Nullable;
+
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -43,14 +45,8 @@ import androidx.annotation.IntDef;
 import androidx.annotation.IntRange;
 import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
-/**
- * This can be used to show an lottie animation in any place that would normally take a drawable.
- *
- * @see <a href="http://airbnb.io/lottie">Full Documentation</a>
- */
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class LottieDrawable extends Drawable implements Drawable.Callback, Animatable {
   private static final String TAG = LottieDrawable.class.getSimpleName();
@@ -1068,7 +1064,7 @@ public class LottieDrawable extends Drawable implements Drawable.Callback, Anima
   }
 
   @Nullable
-  public Bitmap getImageAsset(String id) {
+  public Bitmap getImageAsset(@Nullable String id) {
     ImageAssetManager bm = getImageAssetManager();
     if (bm != null) {
       return bm.bitmapForId(id);
@@ -1076,6 +1072,7 @@ public class LottieDrawable extends Drawable implements Drawable.Callback, Anima
     return null;
   }
 
+  @Nullable
   private ImageAssetManager getImageAssetManager() {
     if (getCallback() == null) {
       // We can't get a bitmap since we can't get a Context from the callback.
@@ -1103,6 +1100,7 @@ public class LottieDrawable extends Drawable implements Drawable.Callback, Anima
     return null;
   }
 
+  @Nullable
   private FontAssetManager getFontAssetManager() {
     if (getCallback() == null) {
       // We can't get a bitmap since we can't get a Context from the callback.

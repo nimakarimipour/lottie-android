@@ -1,5 +1,7 @@
 package com.airbnb.lottie.utils;
 
+import androidx.annotation.Nullable;
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -13,8 +15,6 @@ import android.graphics.PointF;
 import android.graphics.RectF;
 import android.os.Build;
 import android.provider.Settings;
-
-import androidx.annotation.Nullable;
 
 import com.airbnb.lottie.L;
 import com.airbnb.lottie.animation.LPaint;
@@ -71,7 +71,7 @@ public final class Utils {
   private Utils() {
   }
 
-  public static Path createPath(PointF startPoint, PointF endPoint, PointF cp1, PointF cp2) {
+  public static Path createPath(@Nullable PointF startPoint, PointF endPoint, PointF cp1, PointF cp2) {
     Path path = new Path();
     path.moveTo(startPoint.x, startPoint.y);
 
